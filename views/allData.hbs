@@ -1,0 +1,67 @@
+<!-- allData.hbs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Books Data</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    
+  </style>
+</head>
+<body>
+  <h1>All Books Data</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Price (including used books)</th>
+        <th>Number of Pages</th>
+        <th>Average Reviews</th>
+        <th>Number of Reviews</th>
+        <th>Star Rating</th>
+        <th>Dimensions</th>
+        <th>Weight</th>
+        <th>Language</th>
+        <th>Publisher</th>
+        <th>ISBN-13</th>
+        <th>Complete Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each jsonData}}
+      <tr {{#unless this.avg_reviews}}class="highlight"{{/unless}}>
+        <td>{{this.title}}</td>
+        <td>{{this.author}}</td>
+        <td>{{this.price}}</td>
+        <td>{{this.pages}}</td>
+        <td>{{modifyAvg this.avg_reviews}}</td>
+        <td>{{this.n_reviews}}</td>
+        <td>{{this.star}}</td>
+        <td>{{this.dimensions}}</td>
+        <td>{{this.weight}}</td>
+        <td>{{this.language}}</td>
+        <td>{{this.publisher}}</td>
+        <td>{{this.ISBN_13}}</td>
+        <td><a href="{{this.complete_link}}" target="_blank">Amazon Link</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</body>
+</html>
